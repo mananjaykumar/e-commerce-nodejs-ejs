@@ -8,6 +8,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const app = express();
+require("dotenv").config();
 
 // IMPORTING USER MODEL
 const User = require('./models/userMdl');
@@ -93,7 +94,7 @@ app.use(errController.get404);
 
 mongoose.connect(MONGODB_URI).then(resut => {
     console.log('DB Connected!');
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
 }).catch(err => {
     console.log(err);
 });
