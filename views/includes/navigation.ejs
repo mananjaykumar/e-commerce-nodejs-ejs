@@ -1,0 +1,24 @@
+<div class="navigation">
+    <div class="left">
+        <a href="/" class="<%= path === '/' ? 'active': '' %>">Shop</a>
+        <% if(isAuthenticated) { %>
+            <a href="/add-product-req" class="<%= path === '/add-product-req' ? 'active': '' %>">Add Product</a>
+            <a href="/cart" class="<%= path === '/cart' ? 'active': '' %>">My Cart</a>
+            <a href="/order" class="<%= path === '/order' ? 'active': '' %>">My Order</a>
+        <% } %>
+    </div>
+    <div class="right">
+        <% if(isAuthenticated) { %>
+            <form action="/logout" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <span class="userName">Welcome <%= userName %> &nbsp;</span>
+                <button type="submit" class="logoutButton">Logout</button>
+            </form>
+        <% } else { %>
+            <% if(!adminPage) { %>
+                <a href="/signup" class="<%= path === '/signup' ? 'active': '' %>">Signup</a>
+                <a href="/login" class="<%= path === '/login' ? 'active': '' %>">Login</a>
+            <% } %>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<%- include('./includes/adminHead.ejs') %>
+<link rel="stylesheet" href="../../CSS/ADMIN/admin-createUser.css">
+</head>
+<body>
+    <%- include('./includes/adminNav.ejs') %>
+    <div class="signupContainer">
+        <% if(errorMessage) { %>
+            <div class="userMessage userMessageError"><%= errorMessage %></div>
+        <% } %>
+        <% if(successMessage) { %>
+            <div class="userMessage userMessageSuccess"><%= successMessage %></div>
+        <% } %>
+        <h1 style="text-align: center; margin-bottom: 20px;"> CREATE OTHER ADMIN USERS </h1>
+        <form action="/admin/admin-createUser" method="POST">
+            <p><input type="hidden" name="_csrf" value="<%= csrfToken %>"></p>
+            <p><input class="signupInput" type="text" name="name" id="name" placeholder="Enter Your Name"></p>
+            <p><input class="signupInput" type="email" name="email" id="email" placeholder="Enter Your Email"></p>
+            <p><input class="signupInput" type="password" name="password" id="password" placeholder="Enter Your Password"></p>
+            <p><input class="signupInput" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Your Password"></p>
+            <input class="signupSubmit" type="submit" value="Sign up">
+        </form>
+    </div>
+<%- include('./includes/adminEnd.ejs') %>

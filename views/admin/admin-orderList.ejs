@@ -1,0 +1,26 @@
+<%- include('./includes/adminHead.ejs') %>
+<link rel="stylesheet" href="../../CSS/ADMIN/admin-order.css">
+</head>
+<body>
+    <%- include('./includes/adminNav.ejs') %>
+    <h1 style="text-align: center; margin-top: 50px;"> ORDER LIST </h1>
+    <main>
+        <% if (orders.length <= 0) { %>
+            <h1>Nothing there!</h1>
+        <% } else { %>
+            <ul class="orders">
+                <% orders.forEach(order => { %>
+                    <li class="orders__item">
+                        <h1>Order - # <%= order._id %>&nbsp;&nbsp;&nbsp;<span style="color: purple; font-size: 20px;">Ordered by<b style="color: blue;"> <%= order.user.name %> </b>&nbsp;At: - <%= order.orderedAt%></span></h1>
+                        <ul class="orders__products">
+                            <% order.products.forEach(p => { %>
+                                <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </main>
+    
+<%- include('./includes/adminEnd.ejs') %>

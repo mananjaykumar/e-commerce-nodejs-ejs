@@ -1,0 +1,73 @@
+<%- include('./includes/adminHead.ejs') %>
+<link rel="stylesheet" href="../../CSS/ADMIN/admin-portalHome.css">
+</head>
+<body>
+    <%- include('./includes/adminNav.ejs') %>
+    <h1 style="text-align: center; margin-top: 50px;"> WELCOM TO THE ADMIN PORTAL (ADDED PRODUCTS) </h1>
+    <div class="allContents">
+        <% if(products.length> 0) {
+            for(let i=0; i < products.length; i=i +2) { %>
+                <div class="mainContainer">
+                    <div class="container">
+                        <div class="img-container">
+                            <img src="<%= products[i].imageurl %>" alt="Plant" width="327px">
+                        </div>
+                        <div class="product-container">
+                            <div class="product-text">
+                                <h1>
+                                    <%= products[i].title %>
+                                </h1>
+                                <h2>
+                                    <%= products[i].subtitle %>
+                                </h2>
+                                <p>
+                                    <%= products[i].description %>
+                                </p>
+                            </div>
+                            <div class="product-price-btn">
+                                <p><span>&#8377;</span>
+                                        <%= products[i].price %>
+                                </p>
+                                <form action="/admin/products/:<%= products[i]._id %>">
+                                    <button type="submit">Details</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% if(i+1 < products.length) { %>
+                        <div class="container">
+                            <div class="img-container">
+                                <img src="<%= products[i+1].imageurl %>" alt="Plant" width="327px">
+                            </div>
+                            <div class="product-container">
+                                <div class="product-text">
+                                    <h1>
+                                        <%= products[i+1].title %>
+                                    </h1>
+                                    <h2>
+                                        <%= products[i+1].subtitle %>
+                                    </h2>
+                                    <p>
+                                        <%= products[i+1].description %>
+                                    </p>
+                                </div>
+                                <div class="product-price-btn">
+                                    <p><span>&#8377;</span>
+                                        <%= products[i+1].price %>
+                                    </p>
+                                    <form action="/admin/products/:<%= products[i+1]._id %>">
+                                        <button type="submit">Details</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% } else { %>
+                            <% break %>
+                                <% } %>
+                </div>
+                <% } %>
+                    <% } else { %>
+                        <h1>No data</h1>
+                        <% } %>
+    </div>
+<%- include('./includes/adminEnd.ejs') %>

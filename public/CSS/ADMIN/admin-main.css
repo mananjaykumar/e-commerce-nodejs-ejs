@@ -1,0 +1,92 @@
+.invalid{
+    border: 2px solid red;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div.navigation{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: black;
+    padding: 20px;
+}
+div div.left{
+    flex: 8;
+    margin: 0px 0px 0px 20px;
+}
+a{
+    text-decoration: none;
+}
+div.navigation div.left a{
+    padding: 10px;
+    color: white;
+}
+div.navigation div.left a.active{
+    border: none;
+    border-bottom: 1px solid greenyellow;
+}
+div.navigation div.right a.active{
+    border: none;
+    border-bottom: 1px solid greenyellow;
+}
+div div.right a{
+    padding: 10px;
+    color: white;
+}
+div div.right{
+    flex: 1 0 50px;
+    margin: 0px 0px 0px 10px;
+}
+.userName{
+    color: white;
+}
+.logoutButton{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+}
+.logoutButton:hover, .logoutButton:active{
+    color: yellowgreen;
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid yellowgreen;
+}
+/* Slide Show CSS */
+div.slideshow-container{
+    position: relative;
+}
+div.slideshow-container div.slides{
+    display: none;
+}
+div.slideshow-container div.fade{
+    animation-name: fade;
+    animation-duration: 10s;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+/*@keyframes fade {
+
+}*/
+
+.userMessage{
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+    border-radius: 3px;
+
+}
+.userMessageError{
+    border: 1px solid red;
+    background-color: rgb(255, 176, 176);
+    color: red;
+}
+.userMessageSuccess{
+    border: 1px solid yellowgreen;
+    background-color: rgb(140, 240, 140);
+    color: green;
+}

@@ -1,0 +1,30 @@
+.signupContainer{
+    margin: 0 auto;
+    width: 50%;
+    padding: 100px;
+    text-align: center;
+}
+.signupInput{
+    width: 80%;
+    padding: 10px;
+    border: 2px solid purple;
+    outline: none;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+.signupInput:hover, .signupInput:active{
+    border: 2px solid yellowgreen;
+}
+.signupSubmit{
+    width: 20%;
+    padding: 7px 10px 7px 10px;
+    margin: 10px;
+    border: none;
+    background: purple;
+    color: white;
+    outline: none;
+}
+.signupSubmit:hover, .signupSubmit:active{
+    background-color: yellowgreen;
+    cursor: pointer;
+}

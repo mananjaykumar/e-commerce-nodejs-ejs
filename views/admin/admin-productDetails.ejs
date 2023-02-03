@@ -1,0 +1,35 @@
+<%- include('./includes/adminHead.ejs') %>
+<link rel="stylesheet" href="../../CSS/ADMIN/admin-portalHome.css">
+</head>
+<body>
+    <%- include('./includes/adminNav.ejs') %>
+    <h1 style="text-align: center; margin-top: 50px;"> PRODUCT DETAIL </h1>
+    <div class="mainContainer">
+        <div class="container">
+            <div class="img-container">
+                <img src="<%= prods.imageurl %>" alt="Plant" width="327px">
+            </div>
+            <div class="product-container">
+                <div class="product-text">
+                    <h1>
+                        <%= prods.title %>
+                    </h1>
+                    <h2>
+                        <%= prods.subtitle %>
+                    </h2>
+                    <p>
+                        <%= prods.description %>
+                    </p>
+                </div>
+                <div class="product-price-btn">
+                    <p><span>&#8377;</span>
+                            <%= prods.price %>
+                    </p>
+                    <form action="/admin/add-product/:true/:<%= prods._id %>%>" method="GET">
+                        <button type="submit">Edit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+<%- include('./includes/adminEnd.ejs') %>

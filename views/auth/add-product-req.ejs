@@ -1,0 +1,21 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="../CSS/signup.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div class="signupContainer">
+        <% if(errorMessage) { %>
+            <div class="userMessage userMessageError"><%= errorMessage %></div>
+        <% } %>
+        <h1 style="text-align: center; margin-bottom: 20px;"> REQUEST ADMIN TO ADD PRODUCTS. </h1>
+        <form action="/add-product-req" method="POST">
+            <p><input type="hidden" name="_csrf" value="<%= csrfToken %>"></p>
+            <p><input class="signupInput" type="text" name="title" id="title" placeholder="Title"></p>
+            <p><input class="signupInput" type="text" name="subtitle" id="subtitle" placeholder="Sub Title"></p>
+            <p><input class="signupInput" type="text" name="imageurl" id="imageurl" placeholder="Image Url"></p>
+            <p><input class="signupInput" type="number" step="0.01" name="price" id="price" placeholder="Price"></p>
+            <p><textarea class="signupInput" name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea></p>
+            <input class="signupSubmit" type="submit" value="Add Product">
+        </form>
+    </div>
+<%- include('../includes/end.ejs') %></body>

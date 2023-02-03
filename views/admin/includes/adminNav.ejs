@@ -1,0 +1,20 @@
+<div class="navigation">
+    <div class="left">
+        <% if(isAdminAuthenticated) { %>
+            <a href="/admin/home" class="<%= path === '/admin/home' ? 'active': '' %>">Home</a>
+            <a href="/admin/add-product/:false" class="<%= path === '/admin/add-product' ? 'active': '' %>">Add Products</a>
+            <a href="/admin/user-list" class="<%= path === '/admin/admin-userList' ? 'active': '' %>">Users</a>
+            <a href="/admin/admin-createUser" class="<%= path === '/admin/admin-createUser' ? 'active': '' %>">Create Admin</a>
+            <a href="/admin/orders" class="<%= path === '/admin/order' ? 'active': '' %>">Orders</a>
+        <% } %>
+    </div>
+    <div class="right">
+        <% if(isAdminAuthenticated) { %>
+            <form action="/admin/logout" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <span class="userName" style=" font-size: 15px;">Welcome <%= adminUserName %> &nbsp;</span>
+                <button type="submit" class="logoutButton">Logout</button>
+            </form>
+        <% } %>
+    </div>
+</div>

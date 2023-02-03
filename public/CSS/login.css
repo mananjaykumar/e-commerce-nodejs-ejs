@@ -1,0 +1,33 @@
+.loginContainer{
+    margin: 0 auto;
+    width: 50%;
+    padding: 100px;
+    text-align: center;
+}
+.loginInput{
+    width: 80%;
+    padding: 10px;
+    border: 2px solid purple;
+    outline: none;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+.loginInput:hover, .loginInput:active{
+    border: 2px solid yellowgreen;
+}
+.loginSubmit{
+    width: 40%;
+    padding: 7px 10px 7px 10px;
+    margin: 10px;
+    border: none;
+    background: purple;
+    color: white;
+    outline: none;
+}
+.loginSubmit:hover, .loginSubmit:active{
+    background-color: yellowgreen;
+    cursor: pointer;
+}
+.resetPasswordContainer{
+    text-align: center;
+}

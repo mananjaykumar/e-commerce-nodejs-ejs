@@ -1,0 +1,90 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="../../CSS/index.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div class="slideshow-container">
+        <div class="slides fade">
+            <img src="./images/1.jpg" alt="Iphone" height="700px" width="100%">
+        </div>
+        <div class="slides fade">
+            <img src="./images/2.webp" alt="Dell Inspiron" height="700px" width="100%">
+        </div>
+        <div class="slides fade">
+            <img src="./images/3.jpg" alt="Iphone" height="700px" width="100%">
+        </div>
+    </div>
+
+    <div class="allContents">
+        <% if(products.length> 0) {
+            for(let i=0; i < products.length; i=i +2) { %>
+                <div class="mainContainer">
+                    <div class="container">
+                        <div class="img-container">
+                            <img src="<%= products[i].imageurl %>" alt="Plant" width="327px">
+                        </div>
+                        <div class="product-container">
+                            <div class="product-text">
+                                <h1>
+                                    <%= products[i].title %>
+                                </h1>
+                                <h2>
+                                    <%= products[i].subtitle %>
+                                </h2>
+                                <p>
+                                    <%= products[i].description %>
+                                </p>
+                            </div>
+                            <div class="product-price-btn">
+                                <p><span>&#8377;</span>
+                                        <%= products[i].price %>
+                                </p>
+                                <form action="/cart" method="POST">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <input type="hidden" name="productId" value="<%= products[i]._id %>">
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% if(i+1 < products.length) { %>
+                        <div class="container">
+                            <div class="img-container">
+                                <img src="<%= products[i+1].imageurl %>" alt="Plant" width="327px">
+                            </div>
+                            <div class="product-container">
+                                <div class="product-text">
+                                    <h1>
+                                        <%= products[i+1].title %>
+                                    </h1>
+                                    <h2>
+                                        <%= products[i+1].subtitle %>
+                                    </h2>
+                                    <p>
+                                        <%= products[i+1].description %>
+                                    </p>
+                                </div>
+                                <div class="product-price-btn">
+                                    <p><span>&#8377;</span>
+                                            <%= products[i+1].price %>
+                                    </p>
+                                    <form action="/cart" method="POST">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" name="productId" value="<%= products[i+1]._id %>">
+                                        <button type="submit">Buy Now</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% } else { %>
+                            <% break %>
+                                <% } %>
+                </div>
+                <% } %>
+                    <% } else { %>
+                        <h1>No data</h1>
+                        <% } %>
+    </div>
+    <script src="./Js/main.js"></script>
+    
+<%- include('../includes/end.ejs') %>

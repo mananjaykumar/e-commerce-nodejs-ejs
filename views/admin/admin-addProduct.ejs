@@ -1,0 +1,68 @@
+<%- include('./includes/adminHead.ejs') %>
+<link rel="stylesheet" href="../../CSS/ADMIN/admin-addProduct.css">
+<style>
+    .signupContainer{
+    margin: 0 auto;
+    width: 50%;
+    padding: 100px;
+    text-align: center;
+}
+.signupInput{
+    width: 80%;
+    padding: 10px;
+    border: 2px solid purple;
+    outline: none;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+.signupInput:hover, .signupInput:active{
+    border: 2px solid yellowgreen;
+}
+.signupSubmit{
+    width: 20%;
+    padding: 7px 10px 7px 10px;
+    margin: 10px;
+    border: none;
+    background: purple;
+    color: white;
+    outline: none;
+}
+.signupSubmit:hover, .signupSubmit:active{
+    background-color: yellowgreen;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <%- include('./includes/adminNav.ejs') %>
+    <div class="signupContainer">
+        <% if(errorMessage) { %>
+            <div class="userMessage userMessageError"><%= errorMessage %></div>
+        <% } %>
+        <% if(successMessage) { %>
+            <div class="userMessage userMessageSuccess"><%= successMessage %></div>
+        <% } %>
+        <h1 style="text-align: center; margin-bottom: 20px;"><% if (editing) { %> UPDATE PRODUCTS <% } else { %> ADD PRODUCT <% } %> </h1>
+        <form action="/admin/<% if(editing) { %>edit-product/:<%= prods._id %><% } else { %>add-product<% } %>" method="POST">
+            <p>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </p>
+            <p>
+                <input class="signupInput" type="text" name="title" id="title" placeholder="Title" value="<% if(editing) { %><%= prods.title %><% }%>">
+            </p>
+            <p>
+                <input class="signupInput" type="text" name="subtitle" id="subtitle" placeholder="Sub Title" value="<% if(editing) { %><%= prods.subtitle %><% }%>">
+            </p>
+            <p>
+                <input class="signupInput" type="text" name="imageurl" id="imageurl" placeholder="Image Url" value="<% if(editing) { %><%= prods.imageurl %><% }%>">
+            </p>
+            <p>
+                <input class="signupInput" type="number" step="0.01" name="price" id="price" placeholder="Price" value="<% if(editing) { %><%= prods.price %><% }%>">
+            </p>
+            <p>
+                <textarea class="signupInput" name="description" id="description" cols="30" rows="10" placeholder="Description"><% if(editing) { %><%= prods.description %><% }%></textarea>
+            </p>
+            <input class="signupSubmit" type="submit" value="<% if(editing) { %>Update Product<% } else { %> Add Product <% } %>">
+        </form>
+    </div>
+<%- include('./includes/adminEnd.ejs') %>

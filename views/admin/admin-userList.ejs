@@ -1,0 +1,32 @@
+<%- include('./includes/adminHead.ejs') %>
+<link rel="stylesheet" href="../../CSS/ADMIN/admin-userList.css">
+</head>
+<body>
+    <%- include('./includes/adminNav.ejs') %>
+    <h1 style="text-align: center; margin-top: 50px;"> USER LIST </h1>
+    <div class="Container">
+    <% for(let i = 0; i < users.length; i++) { %>
+        <div class="users">
+            <div class="userCard">
+                <div class="userName"><h2><%= users[i].name %></h2></div>
+                <div class="userName"><span><i><%= users[i].email %></i></span></div>
+                <!--<div class="userName"><h3><%= users[i].isRestricted %></h3></div>-->
+                <% if(users[i].isRestricted === false) { %>
+                    <form action="/admin/user-list" method="POST">
+                        <input type="hidden" name="userId" value="<%= users[i]._id %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="restrict-user">Restrict this user</button>
+                    </form>
+                <% } else { %>
+                    <form action="/admin/user-list" method="POST">
+                        <input type="hidden" name="userId" value="<%= users[i]._id %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="activate-user">Activate this user</button>
+                    </form>
+                <% } %>
+            </div>
+        </div><br><br><br>
+    <% } %>
+    </div>
+    
+<%- include('./includes/adminEnd.ejs') %>
