@@ -93,7 +93,7 @@ app.use(errController.get404);
 
 mongoose.connect(MONGODB_URI).then(resut => {
     console.log('DB Connected!');
-    app.listen(4000);
+    app.listen(3000);
 }).catch(err => {
     console.log(err);
 });
