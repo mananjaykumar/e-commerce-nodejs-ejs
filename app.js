@@ -25,7 +25,8 @@ const store = new MongoDBStore({
 const csrfProtection = csrf();
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+// app.set("views", "views");
+app.set("views", path.join(__dirname, 'views'));
 
 // IMPORTING ERROR CONTROLLERS
 const errController = require("./controllers/errorCtrl");
